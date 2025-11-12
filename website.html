@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Loan Lead Generation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7f8;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    form {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      max-width: 480px;
+      width: 100%;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #333;
+    }
+
+    h3 {
+      color: #4a90e2;
+      margin-bottom: 0.75rem;
+      border-bottom: 2px solid #4a90e2;
+      padding-bottom: 4px;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 15px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+      outline-offset: 2px;
+      outline-color: transparent;
+      resize: vertical;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="date"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #4a90e2;
+      outline-color: #4a90e2;
+    }
+
+    .button {
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 22px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+      user-select: none;
+    }
+
+    .button:hover {
+      background: #357ABD;
+      box-shadow: 0 6px 15px rgba(53, 122, 189, 0.5);
+    }
+
+    .button:disabled {
+      background: #a4bccc;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      form {
+        padding: 25px 20px;
+      }
+      .button {
+        width: 100%;
+      }
+      .nav-buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-56JT9NCZ');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56JT9NCZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<form id="loanForm">
+
+  <h2>Loan Application Form</h2>
+
+  <!-- Page 1: User Name -->
+  <div class="page active" id="page1">
+    <h3>Enter Your Name</h3>
+    <label>Full Name:
+      <input type="text" name="fullName" placeholder="Enter your full name" required>
+    </label>
+    <div class="nav-buttons">
+      <div></div>
+      <button type="button" class="button" onclick="nextPage(1)">Next</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Date of Birth -->
+  <div class="page" id="page2">
+    <h3>Date of Birth</h3>
+    <label>Date of Birth:
+      <input type="date" name="dob" max="" required>
+    </label>
+    <div class="nav-buttons">
+      <button type="button" class="button" onclick="prevPage(2)">Back</button>
+      <button type="button" class="button" onclick="nextPage(2)">Next</button>
+    </div>
+  </div>
+
+  <!-- Page 3: Address with Pincode -->
+  <div class="page" id="page3">
+    <h3>Address Details</h3>
+    <label>Address:
+      <textarea name="address" rows="3" placeholder="Enter your full address" required></textarea>
+    </label>
+    <label>Pincode:
+      <input type="text" name="pincode" pattern="[0-9]{6}" placeholder="6-digit pincode" title="Please enter a valid 6-digit pincode" required>
+    </label>
+    <div class="nav-buttons">
+      <button type="button" class="button" onclick="prevPage(3)">Back</button>
+      <button type="button" class="button" onclick="nextPage(3)">Next</button>
+    </div>
+  </div>
+
+  <!-- Page 4: Email and Phone -->
+  <div class="page" id="page4">
+    <h3>Contact Information</h3>
+    <label>Email:
+      <input type="email" name="email" placeholder="example@domain.com" required>
+    </label>
+    <label>Phone Number:
+      <input type="tel" name="phone" pattern="[+0-9]{10,15}" placeholder="+1234567890" title="Enter a valid phone number" required>
+    </label>
+    <div class="nav-buttons">
+      <button type="button" class="button" onclick="prevPage(4)">Back</button>
+      <button type="button" class="button" onclick="nextPage(4)">Next</button>
+    </div>
+  </div>
+
+  <!-- Page 5: Job Status and Other Details -->
+  <div class="page" id="page5">
+    <h3>Employment Details</h3>
+    <label>Employment Status:
+      <select name="employmentStatus" required>
+        <option value="" disabled selected>Select status</option>
+        <option value="Employed">Employed</option>
+        <option value="Self-employed">Self-employed</option>
+        <option value="Unemployed">Unemployed</option>
+        <option value="Student">Student</option>
+        <option value="Retired">Retired</option>
+      </select>
+    </label>
+    <label>Monthly Income (USD):
+      <input type="number" name="monthlyIncome" min="0" placeholder="E.g., 5000" required>
+    </label>
+    <div class="nav-buttons">
+      <button type="button" class="button" onclick="prevPage(5)">Back</button>
+      <button type="button" class="button" onclick="nextPage(5)">Next</button>
+    </div>
+  </div>
+
+  <!-- Page 6: Existing Loan -->
+  <div class="page" id="page6">
+    <h3>Existing Loans</h3>
+    <label>Do you have any existing loans?</label>
+    <select id="existingLoanSelect" name="existingLoan" required onchange="handleLoanBankField(this.value)">
+      <option value="" disabled selected>Select yes or no</option>
+      <option value="No">No</option>
+      <option value="Yes">Yes</option>
+    </select>
+    <div id="loanBankDiv" style="display:none; margin-top:15px;">
+      <label>Please select your bank:
+        <select name="loanBank">
+          <option value="" disabled selected>Select bank</option>
+          <option value="Bank of America">Bank of America</option>
+          <option value="Chase">Chase</option>
+          <option value="Wells Fargo">Wells Fargo</option>
+          <option value="Citibank">Citibank</option>
+          <option value="HSBC">HSBC</option>
+          <option value="Other">Other</option>
+        </select>
+      </label>
+    </div>
+    <div class="nav-buttons">
+      <button type="button" class="button" onclick="prevPage(6)">Back</button>
+      <button type="button" class="button" onclick="nextPage(6)">Next</button>
+    </div>
+  </div>
+
+  <!-- Page 7: Thank You -->
+  <div class="page" id="page7">
+    <h3>Thank You!</h3>
+    <p>Thank you for your loan application. We will review your details and get back to you shortly.</p>
+    <button type="button" class="button" onclick="startOver()">Start Over</button>
+  </div>
+
+</form>
+
+<script>
+  // Set max for DOB to today to prevent future date
+  const dobInput = document.querySelector('input[name="dob"]');
+  dobInput.max = new Date().toISOString().split("T")[0];
+
+  function nextPage(current) {
+    const currentPage = document.getElementById('page' + current);
+    const nextPage = document.getElementById('page' + (current + 1));
+    const inputs = currentPage.querySelectorAll('input, select, textarea');
+    for (let input of inputs) {
+      // Special validation: if bank selector visible and required, check validity
+      if (input.closest('#loanBankDiv') && input.parentElement.parentElement.style.display === 'none') {
+        continue; // skip hidden loan bank select validation
+      }
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        return;
+      }
+    }
+    currentPage.classList.remove('active');
+    nextPage.classList.add('active');
+  }
+
+  function prevPage(current) {
+    const currentPage = document.getElementById('page' + current);
+    const prevPage = document.getElementById('page' + (current - 1));
+    currentPage.classList.remove('active');
+    prevPage.classList.add('active');
+  }
+
+  function handleLoanBankField(value) {
+    const loanBankDiv = document.getElementById('loanBankDiv');
+    if (value === 'Yes') {
+      loanBankDiv.style.display = 'block';
+      loanBankDiv.querySelector('select').setAttribute('required', 'required');
+    } else {
+      loanBankDiv.style.display = 'none';
+      loanBankDiv.querySelector('select').removeAttribute('required');
+      loanBankDiv.querySelector('select').value = '';
+    }
+  }
+
+  document.getElementById('loanForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    let data = {};
+    formData.forEach((value, key) => { data[key] = value; });
+    alert(`Thank you for your loan application, ${data.fullName}! We will contact you soon.`);
+    e.target.reset();
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page1').classList.add('active');
+  });
+
+  function startOver() {
+    document.getElementById('loanForm').reset();
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page1').classList.add('active');
+    handleLoanBankField('No');
+  }
+</script>
+
+</body>
+</html>
+
